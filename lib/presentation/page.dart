@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_bloc_133/todo_bloc/todo_bloc.dart';
 
 class TodoPage extends StatelessWidget {
   const TodoPage({super.key});
@@ -17,7 +18,14 @@ class TodoPage extends StatelessWidget {
               Text('Todo List'),
               BlocBuilder<TodoBloc, TodoState>(
                 builder: (context, state) {
-                  return BlocBuilder;
+                  if (state is TodoLoaded) {
+                    if (state.selectedDate != null) {
+                      return Text(
+                        '${state.selectedDate!.day}/${state.selectedDate!.month}/${state.selectedDate!.year}',
+                      );
+                    }
+                  }
+                  return Text('No date selected');
                 },
               ),
             ],
