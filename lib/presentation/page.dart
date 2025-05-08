@@ -150,13 +150,22 @@ class TodoPage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
+                                Checkbox(
+                                  value: todo.isComplete, 
+                                  onChanged: (value) {
+                                    context.read<TodoBloc>().add(
+                                      TodoEventComplete(index: index),
+                                    );
+                                  }
+                                )
                               ],
                             ),
                           );
                         }
                       );
+                    } else {
+                      return Center(child: Text('No todos available'));
                     }
-                    return BlocBuilder;
                   },
                 ),
               ),
