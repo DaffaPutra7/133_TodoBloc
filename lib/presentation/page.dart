@@ -40,9 +40,9 @@ class TodoPage extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {
                         showDatePicker(
-                          context: context, 
+                          context: context,
                           initialDate: DateTime.now(),
-                          firstDate: DateTime(2000), 
+                          firstDate: DateTime(2000),
                           lastDate: DateTime(2100),
                         ).then((selectedDate) {
                           if (selectedDate != null) {
@@ -51,7 +51,7 @@ class TodoPage extends StatelessWidget {
                             );
                           }
                         });
-                      }, 
+                      },
                       child: Text('Select Date'),
                     ),
                   ),
@@ -83,7 +83,7 @@ class TodoPage extends StatelessWidget {
                           if (selectedDate is TodoLoaded) {
                             context.read<TodoBloc>().add(
                               TodoEventAdd(
-                                title: _controller.text, 
+                                title: _controller.text,
                                 date: selectedDate.selectedDate!,
                               ),
                             );
@@ -91,10 +91,18 @@ class TodoPage extends StatelessWidget {
                             selectedDate.selectedDate = null;
                           }
                         }
-                      }, 
+                      },
                       child: Text('Tambah'),
                     ),
                   ],
+                ),
+              ),
+              SizedBox(height: 16.0),
+              Expanded(
+                child: BlocBuilder<TodoBloc, TodoState>(
+                  builder: (context, state) {
+                    return BlocBuilder;
+                  },
                 ),
               ),
             ],
